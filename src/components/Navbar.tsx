@@ -74,15 +74,19 @@ export default function Navbar({ discordUrl = "https://discord.gg" }: NavbarProp
             className="flex items-center space-x-3 group cursor-pointer"
             id="brand-logo"
           >
-            <div className="w-8 h-8 bg-[#dc2626] rounded flex items-center justify-center text-white group-hover:bg-red-700 transition-colors duration-200">
-              <Shield className="w-4 h-4" />
-            </div>
+            <div className="w-8 h-8 flex items-center justify-center">
+              <img 
+                  src="https://i.ibb.co.com/WvmTmp9b/image.webp" 
+                      alt="Logo NFD" 
+                          className="w-full h-full object-contain" 
+                            />
+                            </div>
             <div>
               <span className="font-display font-black text-base tracking-tight uppercase text-white block">
-                DAMKAR <span className="text-[#dc2626]">DRD</span>
+                NUSANTARA <span className="text-[#dc2626]">NFD</span>
               </span>
               <span className="font-mono text-[9px] tracking-widest text-zinc-500 font-bold uppercase block -mt-1">
-                Roleplay Dept.
+                Fire Departement
               </span>
             </div>
           </a>

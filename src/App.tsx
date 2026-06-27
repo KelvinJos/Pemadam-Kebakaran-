@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 
 export default function App() {
   // Shared Discord Invite URL for the roleplay community
-  const DISCORD_URL = "https://discord.gg/invite/damkar-rp";
+  const DISCORD_URL = "https://discord.gg/MerRC8CKUE";
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-zinc-100 flex flex-col font-sans selection:bg-[#dc2626] selection:text-white" id="landing-page-root">

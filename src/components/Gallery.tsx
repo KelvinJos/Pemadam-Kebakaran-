@@ -189,7 +189,7 @@ export default function Gallery() {
                   {/* Footer Disclaimer */}
                   <div className="mt-6 pt-5 border-t border-white/5 flex justify-between items-center">
                     <span className="font-mono text-[9px] text-zinc-600 tracking-wider">
-                      ID: LOG-DRD-{selectedItem.id.toUpperCase()}
+                      ID: LOG-NFD-{selectedItem.id.toUpperCase()}
                     </span>
                     <span className="font-display font-bold text-[10px] uppercase tracking-wider text-red-500 flex items-center">
                       <Eye className="w-4 h-4 mr-1.5" /> Diverifikasi & Disetujui

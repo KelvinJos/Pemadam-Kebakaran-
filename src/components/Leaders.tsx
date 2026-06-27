@@ -38,7 +38,7 @@ export default function Leaders() {
             Pimpinan Tertinggi Departemen
           </h3>
           <p className="text-zinc-500 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
-            Mengenal barisan pimpinan tertinggi yang bertanggung jawab atas arah kebijakan administratif, taktis, dan operasional Damkar Roleplay Department.
+            Mengenal barisan pimpinan tertinggi yang bertanggung jawab atas arah kebijakan administratif, taktis, dan operasional Nusantara Fire Departement.
           </p>
         </div>
 

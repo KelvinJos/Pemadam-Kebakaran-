@@ -29,7 +29,7 @@ export default function Footer({ discordUrl = "https://discord.gg" }: FooterProp
               </div>
               <div>
                 <span className="font-display font-black text-base text-white tracking-tight uppercase block">
-                  DAMKAR <span className="text-[#dc2626]">DRD</span>
+                  NUSANTARA <span className="text-[#dc2626]">NFD</span>
                 </span>
                 <span className="text-[9px] font-mono font-semibold tracking-widest text-zinc-500 uppercase block -mt-1">
                   Divisi Simulasi
@@ -129,7 +129,7 @@ export default function Footer({ discordUrl = "https://discord.gg" }: FooterProp
         {/* Bottom Credits & Copyright */}
         <div className="border-t border-white/5 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <div className="text-[10px] text-zinc-600 font-mono text-center sm:text-left leading-relaxed uppercase tracking-wider">
-            &copy; {currentYear} Damkar Roleplay Department. Hak Cipta Dilindungi Undang-Undang. <br />
+            &copy; {currentYear} Nusantara Fire Departement. Hak Cipta Dilindungi Undang-Undang. <br />
             Menyajikan simulasi penuh integritas, loyalitas, dan dedikasi sejak 2026.
           </div>
 

@@ -99,11 +99,11 @@ export default function Hero({ discordUrl = "https://discord.gg" }: HeroProps) {
           {/* Clean Minimalism Design Title */}
           <motion.h1
             variants={itemVariants}
-            className="font-display font-black text-5xl sm:text-6xl lg:text-7xl leading-[0.95] tracking-tighter uppercase text-white mb-6"
+            className="font-display font-black text-4xl sm:text-5xl lg:text-6xl leading-[0.95] tracking-tighter uppercase text-white mb-6"
             id="hero-title"
           >
-            Damkar <br />Roleplay <br />
-            <span className="text-white/25">Department</span>
+            Nusantara <br />Fire <br />
+            <span className="text-white/25">Departement</span>
           </motion.h1>
 
           {/* Professional Underline Accent & Mission */}
@@ -113,7 +113,7 @@ export default function Hero({ discordUrl = "https://discord.gg" }: HeroProps) {
           >
             <div className="h-[1px] w-8 bg-[#dc2626]"></div>
             <p className="font-mono text-[10px] text-[#dc2626] uppercase tracking-[0.3em] font-bold">
-              Wadah Simulasi Tanggap Darurat
+              instansi penanggulangan kebakaran dan penyelamatan
             </p>
             <div className="h-[1px] w-8 bg-[#dc2626]"></div>
           </motion.div>
@@ -123,7 +123,7 @@ export default function Hero({ discordUrl = "https://discord.gg" }: HeroProps) {
             className="text-sm sm:text-base text-zinc-400 font-normal leading-relaxed mb-10 max-w-xl mx-auto"
             id="hero-tagline"
           >
-            Simulasi pemadaman kebakaran struktur, penyelamatan taktis, dan penanganan material berbahaya berpresisi tinggi dengan kedisiplinan penuh.
+            Nusantara Fire Departement adalah sebuah departemen yang ada di kota Nusantara yang bertugas untuk melaksanakan tugas-tugas penyelamatan dan pemadam kebakaran. Serta melaksanakan bantuan-bantuan yang diperlukan oleh warga.
           </motion.p>
 
           {/* Call to Actions - Ultra clean buttons */}

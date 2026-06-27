@@ -148,7 +148,7 @@ export default function JoinSection({ discordUrl = "https://discord.gg" }: JoinS
               Siapa Kami & Apa Tugas Kami
             </h2>
             <p className="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-4 font-normal">
-              Damkar Roleplay Department adalah fraksi tanggap darurat premium berpendaftaran khusus (whitelisted). 
+              Nusantara Fire Departement adalah fraksi tanggap darurat premium berpendaftaran khusus (whitelisted). 
               Kami mensimulasikan tugas pemadaman kebakaran dunia nyata, penanganan material berbahaya (Hazmat), dan tindakan medis penyelamatan secara mendalam dan imersif di dalam server roleplay.
             </p>
             <p className="text-zinc-500 text-[11px] leading-relaxed mb-6">
