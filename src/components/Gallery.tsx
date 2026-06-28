@@ -53,21 +53,28 @@ export default function Gallery() {
           </div>
 
           {/* Filtering Tabs - Sleek pill style to reduce blockiness */}
-          <div className="flex flex-wrap gap-2" id="gallery-filter-tabs">
+          <div className="flex flex-wrap gap-2 p-1 bg-[#111115]/90 rounded-full border border-white/5 shadow-2xl backdrop-blur-md" id="gallery-filter-tabs">
             {categories.map((cat) => {
               const isActive = filter === cat;
               return (
                 <button
                   key={cat}
                   onClick={() => setFilter(cat)}
-                  className={`px-4 py-2 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all outline-none cursor-pointer ${
+                  className={`relative px-5 py-2.5 rounded-full text-[9px] font-bold uppercase tracking-widest transition-colors outline-none cursor-pointer ${
                     isActive
-                      ? "bg-[#dc2626] text-white shadow-md shadow-red-950/20"
-                      : "bg-white/5 text-gray-400 hover:text-white border border-white/5 hover:bg-white/10"
+                      ? "text-white"
+                      : "text-zinc-400 hover:text-white"
                   }`}
                   id={`gallery-filter-${cat}`}
                 >
-                  {categoryTranslations[cat] || cat}
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeGalleryTabPill"
+                      className="absolute inset-0 bg-[#dc2626] rounded-full -z-10 shadow-md shadow-red-950/30 border border-red-500/20"
+                      transition={{ type: "spring", stiffness: 380, damping: 28 }}
+                    />
+                  )}
+                  <span>{categoryTranslations[cat] || cat}</span>
                 </button>
               );
             })}
@@ -96,7 +103,7 @@ export default function Gallery() {
                 <img
                   src={item.imageUrl}
                   alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105 grayscale group-hover:grayscale-0"
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                   referrerPolicy="no-referrer"
                   loading="lazy"
                 />

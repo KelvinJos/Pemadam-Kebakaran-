@@ -55,19 +55,21 @@ export default function Leaders() {
             <motion.div
               key={leader.name}
               variants={itemVariants}
-              className="flex flex-col items-center text-center p-6 rounded-2xl bg-[#111111]/30 hover:bg-[#111111]/60 transition-all duration-300"
+              className="group flex flex-col items-center text-center p-6 rounded-2xl bg-[#0a0a0c]/60 border border-white/5 hover:border-red-500/25 transition-all duration-500 hover:-translate-y-1 relative overflow-hidden"
             >
+              <div className="absolute top-0 right-0 w-24 h-24 bg-red-900/5 rounded-full blur-2xl group-hover:bg-red-800/10 transition-all duration-500" />
+              
               {/* Sleek circular avatar with soft glowing ring */}
               <div className="relative mb-6">
-                <div className="absolute inset-0 bg-[#dc2626]/20 rounded-full blur-sm scale-105 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-[#dc2626]/25 rounded-full blur-md scale-105 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <img
                   src={leader.avatarUrl}
                   alt={leader.name}
-                  className="w-24 h-24 rounded-full object-cover object-center grayscale hover:grayscale-0 border border-white/10 transition-all duration-500 shadow-xl"
+                  className="w-24 h-24 rounded-full object-cover object-center border border-white/10 group-hover:scale-105 group-hover:border-red-500/30 transition-all duration-500 shadow-xl relative z-10"
                   referrerPolicy="no-referrer"
                 />
                 {/* Small overlay badge for callsign */}
-                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 px-2.5 py-0.5 bg-[#dc2626] border border-red-950 rounded-full text-[8px] font-mono font-bold tracking-widest text-white shadow-md">
+                <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 px-2.5 py-0.5 bg-[#dc2626] border border-red-950 rounded-full text-[8px] font-mono font-bold tracking-widest text-white shadow-md z-20">
                   {leader.callsign}
                 </div>
               </div>

@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
-import Structure from "./components/Structure";
+import Structure from "./Structure";
 import Leaders from "./components/Leaders";
 import Gallery from "./components/Gallery";
 import JoinSection from "./components/JoinSection";

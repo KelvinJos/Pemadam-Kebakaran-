@@ -189,23 +189,23 @@ export const DIVISIONS_DATA: Division[] = [
 
 export const LEADERS_DATA: Leader[] = [
   {
-    name: "Andika Wijaya",
-    role: "Kepala Dinas Pemadam (Fire Chief)",
-    callsign: "CHIEF-01",
+    name: "Frencline",
+    role: "Kepala Dinas Pemadam",
+    callsign: "NFD-01",
     description: "Pimpinan tertinggi yang memegang komando penuh operasional departemen Nusantara Fire Departement, pengelolaan kebijakan whitelist, perumusan standar taktis, dan koordinasi tingkat atas pada insiden bencana kota berskala masif.",
     avatarUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=400&q=80",
   },
   {
-    name: "Budi Santoso",
-    role: "Wakil Kepala Dinas (Deputy Fire Chief)",
-    callsign: "DEP-01",
+    name: "Kelvin",
+    role: "Wakil Kepala Dinas",
+    callsign: "NFD-02",
     description: "Menjabat sebagai kepala pengawas kedisiplinan anggota internal Nusantara Fire Departement, pengelolaan roster kedinasan, penanggung jawab akademi pendidikan taruna baru, serta penyusunan administrasi promosi kenaikan pangkat.",
-    avatarUrl: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&h=400&q=80",
+    avatarUrl: "https://i.ibb.co.com/qYfr3rTH/IMG-20260601-WA0013.webp",
   },
   {
-    name: "Reza Pratama",
-    role: "Kepala Divisi Operasional (Battalion Chief)",
-    callsign: "BAT-01",
+    name: "Tidak Ada",
+    role: "Sekretaris Jendral Pemadam",
+    callsign: "NFD-03",
     description: "Komandan taktis lapangan yang memimpin penyebaran armada Nusantara Fire Departement di area kejadian, memastikan kelancaran komunikasi antar-divisi saat operasi multi-alarm aktif, dan mengawasi langsung keselamatan taktis zona bahaya.",
     avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80",
   },

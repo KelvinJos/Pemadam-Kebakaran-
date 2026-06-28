@@ -1,6 +1,50 @@
+import React, { useRef, useState, useEffect } from "react";
 import { ShieldCheck, ArrowDown, Users, FlameKindling, Activity } from "lucide-react";
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
 import { QUICK_STATS } from "../data";
+
+interface CounterProps {
+  value: string;
+}
+
+function AnimatedCounter({ value }: CounterProps) {
+  const [displayValue, setDisplayValue] = useState(0);
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const numericPart = parseInt(value.replace(/[^0-9]/g, "")) || 0;
+  const suffix = value.replace(/[0-9]/g, "");
+
+  useEffect(() => {
+    if (isInView) {
+      let start = 0;
+      const end = numericPart;
+      if (start === end) return;
+
+      const duration = 1500; // 1.5 seconds
+      const incrementTime = Math.max(Math.floor(duration / end), 15);
+      
+      const timer = setInterval(() => {
+        start += Math.ceil((end - start) / 10);
+        if (start >= end) {
+          setDisplayValue(end);
+          clearInterval(timer);
+        } else {
+          setDisplayValue(start);
+        }
+      }, incrementTime);
+
+      return () => clearInterval(timer);
+    }
+  }, [isInView, numericPart]);
+
+  return (
+    <span ref={ref}>
+      {displayValue}
+      {suffix}
+    </span>
+  );
+}
 
 interface HeroProps {
   discordUrl?: string;
@@ -65,9 +109,9 @@ export default function Hero({ discordUrl = "https://discord.gg" }: HeroProps) {
       {/* Background Image with Clean Flat Vignette */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1617470703128-26a0fc9af10f?auto=format&fit=crop&w=1920&q=80"
+          src="https://i.ibb.co.com/vvRdh40X/1780511633247.webp"
           alt="Fire Truck Siren"
-          className="w-full h-full object-cover object-center opacity-25 select-none grayscale"
+          className="w-full h-full object-cover object-center opacity-25 select-none"
           referrerPolicy="no-referrer"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/80 to-[#0d0d0d]/90" />
@@ -92,35 +136,35 @@ export default function Hero({ discordUrl = "https://discord.gg" }: HeroProps) {
               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#dc2626]"></span>
             </span>
             <span className="font-mono text-[10px] font-bold tracking-widest text-[#dc2626] uppercase">
-              Operasional & Dispatch Aktif
+              Website NFD
             </span>
           </motion.div>
 
           {/* Clean Minimalism Design Title */}
           <motion.h1
             variants={itemVariants}
-            className="font-display font-black text-4xl sm:text-5xl lg:text-6xl leading-[0.95] tracking-tighter uppercase text-white mb-6"
+            className="font-display font-black text-5xl sm:text-6xl lg:text-7xl leading-[0.9] tracking-tighter uppercase text-white mb-6"
             id="hero-title"
           >
-            Nusantara <br />Fire <br />
-            <span className="text-white/25">Departement</span>
+            <span className="text-white">Nusantara</span> <br />
+            <span className="bg-gradient-to-r from-red-500 via-red-600 to-red-400 bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(220,38,38,0.2)]">Fire Departement</span>
           </motion.h1>
 
           {/* Professional Underline Accent & Mission */}
           <motion.div
             variants={itemVariants}
-            className="flex items-center justify-center gap-3 mb-6"
+            className="flex items-center justify-center gap-4 mb-6"
           >
-            <div className="h-[1px] w-8 bg-[#dc2626]"></div>
-            <p className="font-mono text-[10px] text-[#dc2626] uppercase tracking-[0.3em] font-bold">
+            <div className="h-[1px] w-12 bg-red-600/50 shadow-[0_0_8px_#dc2626]"></div>
+            <p className="font-mono text-[9px] text-red-500 uppercase tracking-[0.35em] font-extrabold">
               instansi penanggulangan kebakaran dan penyelamatan
             </p>
-            <div className="h-[1px] w-8 bg-[#dc2626]"></div>
+            <div className="h-[1px] w-12 bg-red-600/50 shadow-[0_0_8px_#dc2626]"></div>
           </motion.div>
 
           <motion.p
             variants={itemVariants}
-            className="text-sm sm:text-base text-zinc-400 font-normal leading-relaxed mb-10 max-w-xl mx-auto"
+            className="text-xs sm:text-sm text-zinc-400 font-normal leading-relaxed mb-10 max-w-2xl mx-auto"
             id="hero-tagline"
           >
             Nusantara Fire Departement adalah sebuah departemen yang ada di kota Nusantara yang bertugas untuk melaksanakan tugas-tugas penyelamatan dan pemadam kebakaran. Serta melaksanakan bantuan-bantuan yang diperlukan oleh warga.
@@ -129,20 +173,23 @@ export default function Hero({ discordUrl = "https://discord.gg" }: HeroProps) {
           {/* Call to Actions - Ultra clean buttons */}
           <motion.div
             variants={itemVariants}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-16"
+            className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-20"
             id="hero-actions"
           >
             <a
               href={discordUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full sm:w-auto px-8 py-3.5 bg-[#dc2626] hover:bg-red-700 text-white font-bold text-xs uppercase tracking-widest rounded shadow-lg shadow-red-950/30 transition-all duration-200 text-center"
+              className="relative overflow-hidden group w-full sm:w-auto px-8 py-4 bg-[#dc2626] hover:bg-red-600 text-white font-extrabold text-[10px] uppercase tracking-widest rounded-xl shadow-2xl shadow-red-950/50 border border-red-500/25 transition-all duration-300 text-center"
             >
-              Gabung Discord Kami
+              <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+              <span className="flex items-center justify-center space-x-2">
+                <span>Gabung Discord Kami</span>
+              </span>
             </a>
             <button
               onClick={scrollToStructure}
-              className="w-full sm:w-auto px-8 py-3.5 bg-transparent hover:bg-white/5 text-zinc-300 font-bold text-xs uppercase tracking-widest rounded border border-white/10 transition-all duration-200 text-center cursor-pointer"
+              className="w-full sm:w-auto px-8 py-4 bg-white/5 hover:bg-white/10 text-zinc-200 font-extrabold text-[10px] uppercase tracking-widest rounded-xl border border-white/10 transition-all duration-300 text-center cursor-pointer shadow-lg hover:border-red-500/30"
             >
               Jelajahi Divisi
             </button>
@@ -160,17 +207,18 @@ export default function Hero({ discordUrl = "https://discord.gg" }: HeroProps) {
           {QUICK_STATS.map((stat, i) => (
             <div
               key={stat.label}
-              className="p-5 rounded bg-[#111111]/80 border border-white/5 transition-all duration-300 hover:border-zinc-800"
+              className="p-6 rounded-2xl bg-[#09090b]/60 border border-white/5 transition-all duration-300 hover:border-red-500/30 hover:shadow-2xl hover:shadow-red-950/10 hover:-translate-y-1 group relative overflow-hidden backdrop-blur-sm"
             >
-              <div className="flex items-center justify-between mb-3">
-                <span className="font-mono text-xl sm:text-2xl font-black text-white tracking-tight">
-                  {stat.value}
+              <div className="absolute top-0 right-0 w-24 h-24 bg-red-900/5 rounded-full blur-2xl group-hover:bg-red-800/10 transition-all duration-500" />
+              <div className="flex items-center justify-between mb-4">
+                <span className="font-mono text-2xl sm:text-3xl font-black text-white tracking-tight">
+                  <AnimatedCounter value={stat.value} />
                 </span>
-                <div className="p-1.5 bg-white/5 rounded border border-white/5 text-[#dc2626]">
+                <div className="p-2 bg-red-950/20 rounded-xl border border-red-900/10 text-[#dc2626] group-hover:scale-110 transition-transform">
                   {getStatIcon(i)}
                 </div>
               </div>
-              <h3 className="font-display font-bold text-xs text-zinc-300 uppercase tracking-wider mb-1">
+              <h3 className="font-display font-extrabold text-[10px] text-zinc-300 uppercase tracking-widest mb-1">
                 {stat.label}
               </h3>
               <p className="text-[11px] text-zinc-500 font-normal leading-relaxed">
