@@ -10,7 +10,7 @@ interface CounterProps {
 function AnimatedCounter({ value }: CounterProps) {
   const [displayValue, setDisplayValue] = useState(0);
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: true, amount: 0.1, margin: "-10px" });
 
   const numericPart = parseInt(value.replace(/[^0-9]/g, "")) || 0;
   const suffix = value.replace(/[0-9]/g, "");
@@ -19,27 +19,37 @@ function AnimatedCounter({ value }: CounterProps) {
     if (isInView) {
       let start = 0;
       const end = numericPart;
-      if (start === end) return;
+      if (start === end) {
+        setDisplayValue(end);
+        return;
+      }
 
-      const duration = 1500; // 1.5 seconds
-      const incrementTime = Math.max(Math.floor(duration / end), 15);
-      
+      const duration = 1200; // 1.2 seconds
+      const steps = Math.min(end, 60); // Max 60 updates for smooth frame rate
+      const stepDuration = duration / steps;
+      let currentStep = 0;
+
       const timer = setInterval(() => {
-        start += Math.ceil((end - start) / 10);
-        if (start >= end) {
+        currentStep++;
+        const progress = currentStep / steps;
+        // Ease out quadratic
+        const easeProgress = 1 - (1 - progress) * (1 - progress);
+        const nextValue = Math.round(easeProgress * end);
+        
+        setDisplayValue(nextValue);
+
+        if (currentStep >= steps) {
           setDisplayValue(end);
           clearInterval(timer);
-        } else {
-          setDisplayValue(start);
         }
-      }, incrementTime);
+      }, stepDuration);
 
       return () => clearInterval(timer);
     }
   }, [isInView, numericPart]);
 
   return (
-    <span ref={ref}>
+    <span ref={ref} className="tabular-nums">
       {displayValue}
       {suffix}
     </span>

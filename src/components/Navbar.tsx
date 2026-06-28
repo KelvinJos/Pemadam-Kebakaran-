@@ -150,17 +150,17 @@ export default function Navbar({ discordUrl = "https://discord.gg" }: NavbarProp
           </div>
 
           {/* Mobile Menu Toggle Button */}
-          <div className="flex md:hidden">
+          <div className="flex md:hidden relative z-50">
             <button
               onClick={() => setIsOpen(!isOpen)}
               type="button"
-              className="bg-[#111111]/80 text-zinc-400 hover:text-white p-2 rounded-xl focus:outline-none border border-white/5"
+              className="bg-[#111111]/90 text-zinc-400 hover:text-white p-3 rounded-xl focus:outline-none border border-white/10 cursor-pointer select-none active:scale-95 transition-all duration-200"
               aria-controls="mobile-menu"
               aria-expanded={isOpen}
               id="mobile-menu-toggle"
             >
               <span className="sr-only">Buka menu utama</span>
-              {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>

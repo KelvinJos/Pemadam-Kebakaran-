@@ -53,7 +53,7 @@ export default function Gallery() {
           </div>
 
           {/* Filtering Tabs - Sleek pill style to reduce blockiness */}
-          <div className="flex flex-wrap gap-2 p-1 bg-[#111115]/90 rounded-full border border-white/5 shadow-2xl backdrop-blur-md" id="gallery-filter-tabs">
+          <div className="flex flex-wrap justify-center items-center gap-2 p-1.5 bg-[#111115]/90 rounded-2xl md:rounded-full border border-white/5 shadow-2xl backdrop-blur-md" id="gallery-filter-tabs">
             {categories.map((cat) => {
               const isActive = filter === cat;
               return (

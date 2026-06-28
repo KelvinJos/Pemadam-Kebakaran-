@@ -98,15 +98,13 @@ const TACTICAL_ARMORY: Record<string, { name: string; type: string; level: strin
 
 export default function Structure() {
   const [selectedDivisionId, setSelectedDivisionId] = useState<string>(DIVISIONS_DATA[0].id);
-  const [activeVehicleIndex, setActiveVehicleIndex] = useState<number>(0);
   const [equippedGear, setEquippedGear] = useState<Record<string, boolean>>({});
   const [selectedRankIndex, setSelectedRankIndex] = useState<number>(0);
 
   const selectedDivision = DIVISIONS_DATA.find((div) => div.id === selectedDivisionId) || DIVISIONS_DATA[0];
 
-  // Auto reset vehicle and rank detail index when division swaps
+  // Auto reset rank detail index when division swaps
   useEffect(() => {
-    setActiveVehicleIndex(0);
     setSelectedRankIndex(0);
   }, [selectedDivisionId]);
 
@@ -161,15 +159,15 @@ export default function Structure() {
           </motion.div>
         </div>
 
-        {/* Division Selection Switcher - Sleek pill style */}
-        <div className="flex flex-wrap justify-center gap-2 p-1.5 bg-[#0d0d11]/90 rounded-full border border-white/10 max-w-3xl mx-auto mb-12 shadow-2xl backdrop-blur-md" id="division-selector-pills">
+        {/* Division Selection Switcher - Sleek pill style that adapts cleanly to mobile */}
+        <div className="flex flex-wrap justify-center items-center gap-2 p-2 bg-[#0d0d11]/90 rounded-[2rem] md:rounded-full border border-white/10 max-w-3xl mx-auto mb-12 shadow-2xl backdrop-blur-md" id="division-selector-pills">
           {DIVISIONS_DATA.map((division) => {
             const isSelected = selectedDivisionId === division.id;
             return (
               <button
                 key={division.id}
                 onClick={() => setSelectedDivisionId(division.id)}
-                className={`relative px-6 py-3 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 outline-none cursor-pointer flex items-center space-x-2.5 ${
+                className={`relative px-5 py-3 rounded-2xl md:rounded-full text-[10px] font-bold uppercase tracking-widest transition-all duration-300 outline-none cursor-pointer flex items-center justify-center space-x-2.5 flex-1 sm:flex-initial min-w-[140px] sm:min-w-0 ${
                   isSelected
                     ? "text-white"
                     : "text-zinc-400 hover:text-white"
@@ -180,12 +178,12 @@ export default function Structure() {
                 {isSelected && (
                   <motion.div
                     layoutId="activeDivisionPill"
-                    className="absolute inset-0 bg-[#dc2626] rounded-full -z-10 shadow-lg shadow-red-950/40 border border-red-500/30"
+                    className="absolute inset-0 bg-[#dc2626] rounded-2xl md:rounded-full -z-10 shadow-lg shadow-red-950/40 border border-red-500/30"
                     transition={{ type: "spring", stiffness: 380, damping: 28 }}
                   />
                 )}
                 <span>{getIconComponent(division.iconName, `w-3.5 h-3.5 ${isSelected ? "text-white" : "text-[#dc2626]"}`)}</span>
-                <span>{division.name}</span>
+                <span className="text-center whitespace-nowrap">{division.name}</span>
               </button>
             );
           })}
@@ -271,52 +269,7 @@ export default function Structure() {
                 </div>
               </BentoCard>
 
-              {/* Card 5: Operational Assessment Metric Slider */}
-              <BentoCard id="bento-risk-indicator" className="p-6">
-                <div className="flex items-center space-x-2 mb-4">
-                  <Activity className="w-4 h-4 text-red-500" />
-                  <h4 className="font-display font-black text-[10px] uppercase tracking-widest text-white">
-                    INDEKS DINAS OPERASIONAL
-                  </h4>
-                </div>
-                <div className="space-y-4">
-                  <div>
-                    <div className="flex justify-between text-[10px] font-mono mb-1">
-                      <span className="text-zinc-400">TINGKAT BAHAYA</span>
-                      <span className="text-red-500 font-bold">94% MAXIMUM</span>
-                    </div>
-                    <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }} 
-                        animate={{ width: "94%" }} 
-                        transition={{ duration: 1, ease: "easeOut" }}
-                        className="h-full bg-red-600 shadow-[0_0_8px_#dc2626]" 
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="flex justify-between text-[10px] font-mono mb-1">
-                      <span className="text-zinc-400">RESPONS VELOSITAS</span>
-                      <span className="text-zinc-200 font-bold">SUB-3 MENIT</span>
-                    </div>
-                    <div className="h-1.5 w-full bg-white/5 rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }} 
-                        animate={{ width: "85%" }} 
-                        transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
-                        className="h-full bg-zinc-300" 
-                      />
-                    </div>
-                  </div>
-                  <div className="pt-2 border-t border-white/5 flex items-center justify-between text-[10px]">
-                    <span className="text-zinc-500 font-mono">STATUS:</span>
-                    <span className="flex items-center space-x-1 font-bold text-emerald-400">
-                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-ping" />
-                      <span>STANDBY SIAGA I</span>
-                    </span>
-                  </div>
-                </div>
-              </BentoCard>
+
 
             </div>
 
@@ -420,94 +373,7 @@ export default function Structure() {
                 </div>
               </BentoCard>
 
-              {/* Card 4: Armada & Vehicle Code Telemetry (BENTO BOX GRID STYLE) */}
-              <BentoCard id="bento-fleet-telemetry" className="p-8">
-                <div className="flex items-center justify-between border-b border-white/5 pb-4 mb-6">
-                  <div className="flex items-center space-x-2">
-                    <Truck className="w-5 h-5 text-red-500" />
-                    <h4 className="font-display font-black text-sm uppercase tracking-wider text-white">
-                      Inspeksi Armada & Telemetri Unit
-                    </h4>
-                  </div>
-                  <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest">
-                    Live Dispatch Status
-                  </span>
-                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-                  {/* Left Column: Vehicle Selection Tabs */}
-                  <div className="md:col-span-5 space-y-1.5">
-                    {selectedDivision.vehicles.map((v, idx) => {
-                      const isActive = activeVehicleIndex === idx;
-                      return (
-                        <div
-                          key={v.code}
-                          onClick={() => setActiveVehicleIndex(idx)}
-                          className={`p-3.5 rounded-2xl cursor-pointer flex items-center justify-between border transition-all duration-300 ${
-                            isActive
-                              ? "bg-[#16161b] border-red-500/20 shadow-md"
-                              : "bg-white/5 border-transparent text-zinc-400 hover:bg-white/10 hover:text-zinc-200"
-                          }`}
-                        >
-                          <div>
-                            <span className="text-xs font-bold block text-zinc-200">{v.name}</span>
-                            <span className="font-mono text-[8px] text-zinc-500 tracking-wider block mt-0.5">{v.code}</span>
-                          </div>
-                          <CheckCircle2 className={`w-4 h-4 transition-opacity duration-300 ${isActive ? "text-[#dc2626] opacity-100" : "opacity-0"}`} />
-                        </div>
-                      );
-                    })}
-                  </div>
-
-                  {/* Right Column: Live Vehicle Telemetry Screen */}
-                  <div className="md:col-span-7 bg-[#0c0c0f]/60 border border-white/5 rounded-2xl p-6 relative overflow-hidden">
-                    <AnimatePresence mode="wait">
-                      <motion.div
-                        key={activeVehicleIndex}
-                        initial={{ opacity: 0, scale: 0.98 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        exit={{ opacity: 0, scale: 0.98 }}
-                        transition={{ duration: 0.2 }}
-                        className="space-y-4"
-                      >
-                        <div className="flex justify-between items-center">
-                          <span className="font-mono text-[8px] font-black bg-red-950/20 text-red-400 px-2 py-0.5 rounded border border-red-900/10">
-                            TELEMETRI UNIT
-                          </span>
-                          <span className="flex items-center space-x-1 font-mono text-[9px] text-emerald-400">
-                            <span className="w-1 h-1 rounded-full bg-emerald-400 animate-ping" />
-                            <span>CONNECTED</span>
-                          </span>
-                        </div>
-                        
-                        <div>
-                          <h4 className="font-display font-black text-base uppercase text-white leading-tight">
-                            {selectedDivision.vehicles[activeVehicleIndex].name}
-                          </h4>
-                          <span className="font-mono text-[9px] text-zinc-500 tracking-wider">
-                            UNIT CODE: {selectedDivision.vehicles[activeVehicleIndex].code}
-                          </span>
-                        </div>
-
-                        <p className="text-xs text-zinc-400 leading-relaxed">
-                          {selectedDivision.vehicles[activeVehicleIndex].description}
-                        </p>
-
-                        <div className="grid grid-cols-2 gap-3 pt-4 border-t border-white/5">
-                          <div className="p-3 bg-white/5 rounded-xl text-center">
-                            <span className="font-mono text-[9px] text-zinc-500 block uppercase">BAHAN BAKAR</span>
-                            <span className="font-mono text-xs font-black text-white">92% FUEL CAP</span>
-                          </div>
-                          <div className="p-3 bg-white/5 rounded-xl text-center">
-                            <span className="font-mono text-[9px] text-zinc-500 block uppercase">STATUS RATING</span>
-                            <span className="font-mono text-xs font-black text-[#dc2626] uppercase">OPTIMAL</span>
-                          </div>
-                        </div>
-                      </motion.div>
-                    </AnimatePresence>
-                  </div>
-                </div>
-              </BentoCard>
 
             </div>
           </motion.div>
