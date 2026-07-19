@@ -170,7 +170,7 @@ export const DIVISIONS_DATA: Division[] = [
         description: "SUV interseptor medis cepat yang digunakan paramedis untuk mendahului ambulans besar guna penanganan darurat awal."
       }
     ],
-    imageUrl: "https://images.unsplash.com/photo-1607521360093-68d2f16e919b?auto=format&fit=crop&w=800&q=80"
+    imageUrl: "https://i.ibb.co.com/tp8GWT0t/1000208203.webp"
   },
   {
     id: "hazmat",
@@ -197,7 +197,7 @@ export const LEADERS_DATA: Leader[] = [
     role: "Kepala Dinas Pemadam",
     callsign: "NFD-01",
     description: "Pimpinan tertinggi yang memegang komando penuh operasional departemen Nusantara Fire Departement, pengelolaan kebijakan whitelist, perumusan standar taktis, dan koordinasi tingkat atas pada insiden bencana kota berskala masif.",
-    avatarUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&h=400&q=80",
+    avatarUrl: "https://i.ibb.co.com/rfv6mkKQ/1000208197.webp",
   },
   {
     name: "Kelvin",
@@ -211,38 +211,38 @@ export const LEADERS_DATA: Leader[] = [
     role: "Sekretaris Jendral Pemadam",
     callsign: "NFD-03",
     description: "Komandan taktis lapangan yang memimpin penyebaran armada Nusantara Fire Departement di area kejadian, memastikan kelancaran komunikasi antar-divisi saat operasi multi-alarm aktif, dan mengawasi langsung keselamatan taktis zona bahaya.",
-    avatarUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&h=400&q=80",
+    avatarUrl: "https://i.ibb.co.com/gkz5719/images-3.jpg",
   },
 ];
 
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
     id: "gal-1",
-    title: "Pemadaman Kebakaran Rumah",
+    title: "Personil Stanby di stasiun",
     category: "Operation",
-    imageUrl: "https://images.unsplash.com/photo-1583573636246-18cb2246697f?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://i.ibb.co.com/67Cx20J6/1000208207.webp",
     description: "Petugas pemadam kebakaran melakukan penetrasi interior ke dalam rumah yang dipenuhi asap tebal dalam simulasi kebakaran.",
   },
   {
     id: "gal-2",
     title: "Barisan Armada Merah",
     category: "Vehicles",
-    imageUrl: "https://images.unsplash.com/photo-1617470703128-26a0fc9af10f?auto=format&fit=crop&w=1200&q=80",
+    imageUrl: "https://i.ibb.co.com/tPsp1LKn/1784455344873.jpg",
     description: "Armada truk pompa (pumper engine) kustom yang dirawat rapi, siap meluncur merespons panggilan sirene darurat.",
   },
   {
     id: "gal-3",
-    title: "Latihan Ekstrigasi Berat",
+    title: "Kunjungan Tamu",
     category: "Training",
-    imageUrl: "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1200&q=80",
-    description: "Para kru darurat mempelajari kestabilan sasis dan tata letak alat pemotong baja hidrolik saat latihan kecelakaan lalu lintas.",
+    imageUrl: "https://i.ibb.co.com/ZZqrFXX/1000208198.webp",
+    description: "NFD Kedatangan Tamu terhormat dari instansi lain",
   },
   {
     id: "gal-4",
-    title: "Respons Cepat Malam Hari",
+    title: "Unit Kendaraan Terparkir",
     category: "Operation",
-    imageUrl: "https://images.unsplash.com/photo-1534349762230-e0cadf78f5da?auto=format&fit=crop&w=1200&q=80",
-    description: "Patroli malam hari meluncur dengan sirene menyala untuk merespons alarm otomatis dari distrik komersial pusat kota.",
+    imageUrl: "https://i.ibb.co.com/KTnC6Jp/Beauty-Plus-20260525024613408-save.jpg",
+    description: "Unit Kendaraan tampak terparkir didepan stasiun kebakaran dan sedang stanby untuk merespon panggilan darurat kedepannya.",
   },
   {
     id: "gal-5",

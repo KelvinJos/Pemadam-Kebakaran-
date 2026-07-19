@@ -116,15 +116,22 @@ export default function Hero({ discordUrl = "https://discord.gg" }: HeroProps) {
       id="home"
       className="relative min-h-screen flex items-center justify-center pt-28 pb-16 overflow-hidden bg-[#0d0d0d]"
     >
-      {/* Background Image with Clean Flat Vignette */}
+      {/* Background Video with Clean Flat Vignette */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="https://i.ibb.co.com/vvRdh40X/1780511633247.webp"
-          alt="Fire Truck Siren"
-          className="w-full h-full object-cover object-center opacity-25 select-none"
-          referrerPolicy="no-referrer"
+        {/*
+          UBAH VIDEO DI SINI:
+          Ganti nilai 'src' di bawah ini dengan URL video pilihanmu (.webm atau .mp4).
+          Contoh: "https://www.w3schools.com/html/mov_bbb.mp4"
+        */}
+        <video
+          src="https://files.catbox.moe/ouwx0x.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover object-center opacity-25 select-none pointer-events-none"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/80 to-[#0d0d0d]/90" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/80 to-[#0d0d0d]/90 pointer-events-none" />
       </div>
 
       {/* Hero Content Container */}
