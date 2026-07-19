@@ -130,7 +130,8 @@ export const DIVISIONS_DATA: Division[] = [
         code: "LAD-05",
         description: "Truk tangga hidrolik baja 105 kaki yang dilengkapi dengan master stream penembak air otomatis untuk pemadaman gedung tinggi."
       }
-    ]
+    ],
+    imageUrl: "https://i.ibb.co.com/B2z9X1Qp/Damkar2112.webp"
   },
   {
     id: "fire-rescue",
@@ -146,11 +147,12 @@ export const DIVISIONS_DATA: Division[] = [
         code: "RES-40",
         description: "Unit bengkel bergerak yang mengangkut balon pengangkat pneumatik, penyangga hidrolik, dan perkakas pemotong baja."
       }
-    ]
+    ],
+    imageUrl: "https://i.ibb.co.com/5hjmFXKd/firerescu.webp"
   },
   {
     id: "ems-emt",
-    name: "EMS/EMT (Emergency Medical Service)",
+    name: "EMS",
     tagline: "Tindakan Medis Darurat, Penanganan Trauma, dan Evakuasi Cepat.",
     description: "Sayap pertolongan pertama medis pra-rumah sakit yang krusial. Menyediakan resusitasi darurat, stabilisasi kondisi trauma parah pasca-kecelakaan, perawatan luka bakar tingkat lanjut, serta transportasi ambulans berkecepatan tinggi dengan pengawasan intensif.",
     iconName: "HeartPulse",
@@ -167,7 +169,8 @@ export const DIVISIONS_DATA: Division[] = [
         code: "MED-02",
         description: "SUV interseptor medis cepat yang digunakan paramedis untuk mendahului ambulans besar guna penanganan darurat awal."
       }
-    ]
+    ],
+    imageUrl: "https://images.unsplash.com/photo-1607521360093-68d2f16e919b?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: "hazmat",
@@ -183,7 +186,8 @@ export const DIVISIONS_DATA: Division[] = [
         code: "HAZ-12",
         description: "Truk berspesifikasi khusus yang dilengkapi penganalisis udara jarak jauh, bahan penetral zat kimia, dan pancuran dekontaminasi."
       }
-    ]
+    ],
+    imageUrl: "https://i.ibb.co.com/N6DnQ0bp/sddefault.jpg"
   }
 ];
 

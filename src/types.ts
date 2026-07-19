@@ -26,6 +26,7 @@ export interface Division {
   accentColor: string;
   ranks: Rank[];
   vehicles: Vehicle[];
+  imageUrl: string;
 }
 
 export interface GalleryItem {
