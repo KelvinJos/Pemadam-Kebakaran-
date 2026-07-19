@@ -61,10 +61,8 @@ export default function JoinSection({ discordUrl = "https://discord.gg" }: JoinS
   // Requirement items translated to Indonesian
   const requirements = [
     "Catatan bersih tanpa riwayat ban aktif di server komunitas.",
-    "Memiliki headset dan mikrofon berkualitas baik untuk koordinasi radio.",
     "Memahami dasar-dasar kode radio komunikasi darurat (seperti kode-10).",
     "Sedia mengikuti arahan kepangkatan dan Rantai Komando taktis lapangan.",
-    "Berusia minimal 15 tahun ke atas untuk pendaftaran reguler.",
   ];
 
   // Pipeline steps translated to Indonesian
@@ -133,7 +131,7 @@ export default function JoinSection({ discordUrl = "https://discord.gg" }: JoinS
             <div className="absolute -bottom-3 -right-3 w-12 h-12 border-b-2 border-r-2 border-[#dc2626] rounded-br-xl pointer-events-none transition-all duration-300 group-hover:-bottom-2 group-hover:-right-2" />
             
             <img
-              src="https://images.unsplash.com/photo-1508873696983-2df519f0397e?auto=format&fit=crop&w=800&q=80"
+              src="https://i.ibb.co.com/ccwQ4KDB/1000208223.webp"
               alt="Mengenal Dinas Damkar"
               className="w-full h-[400px] object-cover rounded-2xl shadow-2xl filter grayscale hover:grayscale-0 transition-all duration-500"
               referrerPolicy="no-referrer"
