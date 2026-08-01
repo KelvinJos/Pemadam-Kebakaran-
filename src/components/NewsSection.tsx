@@ -36,43 +36,9 @@ interface ScheduleItem {
 }
 
 // Beautiful Default Content in Indonesian (always populates the UI nicely)
-const DEFAULT_NEWS: NewsItem[] = [
-  {
-    id: "def-news-1",
-    title: "Simulasi Kebakaran Skala Besar di Sektor Komersial Nusantara",
-    imageUrl: "https://i.ibb.co.com/67Cx20J6/1000208207.webp",
-    description: "Seluruh personil dikerahkan dalam simulasi gabungan penanganan api bertingkat tinggi dengan fokus utama pencarian & evakuasi korban terjebak asap tebal.",
-    createdAt: "2026-07-28T20:00:00.000Z"
-  },
-  {
-    id: "def-news-2",
-    title: "Pembaruan Roster Anggota & Whitelist Nusantara Fire Department",
-    imageUrl: "https://i.ibb.co.com/ZZqrFXX/1000208198.webp",
-    description: "Divisi Sekretariat mengumumkan pembaruan data roster operasional. Taruna yang baru lulus akademi diimbau segera melapor untuk pemutakhiran kartu tanda pengenal.",
-    createdAt: "2026-07-25T14:30:00.000Z"
-  }
-];
+const DEFAULT_NEWS: NewsItem[] = [];
 
-const DEFAULT_SCHEDULES: ScheduleItem[] = [
-  {
-    id: "def-sched-1",
-    title: "Pelatihan Dasar Penyelamatan & Ekstrigasi Berat",
-    date: "Sabtu, 8 Agustus 2026",
-    time: "19:30 WIB - Selesai",
-    location: "Stasiun Utama Sektor A / Area Latihan",
-    description: "Kru akan mempelajari teknik evakuasi korban kecelakaan, kestabilan sasis kendaraan ringsek, dan operasional hydraulic spreader.",
-    createdAt: "2026-07-29T10:00:00.000Z"
-  },
-  {
-    id: "def-sched-2",
-    title: "Akademi Cadet Baru - Teori Dasar & Kode Radio Komunikasi",
-    date: "Rabu, 12 Agustus 2026",
-    time: "20:00 WIB - 22:00 WIB",
-    location: "Ruang Kelas Ruang VIP Akademi NFD",
-    description: "Pembekalan modul teori kepangkatan damkar, rantai komando, serta penggunaan frekuensi radio taktis darurat darat.",
-    createdAt: "2026-07-28T11:00:00.000Z"
-  }
-];
+const DEFAULT_SCHEDULES: ScheduleItem[] = [];
 
 export default function NewsSection() {
   const [dbNews, setDbNews] = useState<NewsItem[]>([]);
