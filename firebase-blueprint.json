@@ -1,0 +1,40 @@
+{
+  "entities": {
+    "News": {
+      "title": "News",
+      "description": "Berita dan pengumuman Nusantara Fire Department",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "maxLength": 100 },
+        "imageUrl": { "type": "string", "maxLength": 500 },
+        "description": { "type": "string", "maxLength": 2000 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "imageUrl", "description", "createdAt"]
+    },
+    "Schedule": {
+      "title": "Training Schedule",
+      "description": "Jadwal pelatihan Nusantara Fire Department",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string", "maxLength": 100 },
+        "date": { "type": "string", "maxLength": 50 },
+        "time": { "type": "string", "maxLength": 50 },
+        "location": { "type": "string", "maxLength": 100 },
+        "description": { "type": "string", "maxLength": 500 },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["title", "date", "time", "location", "description", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/news/{newsId}": {
+      "schema": "News",
+      "description": "Collection of news posts"
+    },
+    "/schedules/{scheduleId}": {
+      "schema": "Schedule",
+      "description": "Collection of training schedules"
+    }
+  }
+}

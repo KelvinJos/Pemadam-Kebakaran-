@@ -1,0 +1,62 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global default-deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function isValidNews(data) {
+      return data.keys().hasAll(['title', 'imageUrl', 'description', 'createdAt', 'adminKey'])
+        && data.keys().size() == 5
+        && data.title is string
+        && data.title.size() <= 100
+        && data.imageUrl is string
+        && data.imageUrl.size() <= 500
+        && data.description is string
+        && data.description.size() <= 2000
+        && data.adminKey == "NfdAdminSecret2026";
+    }
+
+    function isValidSchedule(data) {
+      return data.keys().hasAll(['title', 'date', 'time', 'location', 'description', 'createdAt', 'adminKey'])
+        && data.keys().size() == 7
+        && data.title is string
+        && data.title.size() <= 100
+        && data.date is string
+        && data.date.size() <= 50
+        && data.time is string
+        && data.time.size() <= 50
+        && data.location is string
+        && data.location.size() <= 100
+        && data.description is string
+        && data.description.size() <= 500
+        && data.adminKey == "NfdAdminSecret2026";
+    }
+
+    // News Collection Rules
+    match /news/{newsId} {
+      allow read: if true;
+      allow create: if isValidId(newsId) && isValidNews(incoming());
+      allow update: if isValidId(newsId) && isValidNews(incoming());
+      allow delete: if true;
+    }
+
+    // Schedules Collection Rules
+    match /schedules/{scheduleId} {
+      allow read: if true;
+      allow create: if isValidId(scheduleId) && isValidSchedule(incoming());
+      allow update: if isValidId(scheduleId) && isValidSchedule(incoming());
+      allow delete: if true;
+    }
+  }
+}

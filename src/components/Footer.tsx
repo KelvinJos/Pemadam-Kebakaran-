@@ -2,9 +2,10 @@ import { Shield, ArrowUp, HelpCircle, Heart } from "lucide-react";
 
 interface FooterProps {
   discordUrl?: string;
+  onNavigateToAdmin?: () => void;
 }
 
-export default function Footer({ discordUrl = "https://discord.gg" }: FooterProps) {
+export default function Footer({ discordUrl = "https://discord.gg", onNavigateToAdmin }: FooterProps) {
   const handleScrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -96,6 +97,16 @@ export default function Footer({ discordUrl = "https://discord.gg" }: FooterProp
                   Galeri Log Operasional
                 </a>
               </li>
+              {onNavigateToAdmin && (
+                <li>
+                  <button
+                    onClick={onNavigateToAdmin}
+                    className="hover:text-[#dc2626] transition-colors text-left cursor-pointer"
+                  >
+                    Portal Staf Administrator
+                  </button>
+                </li>
+              )}
             </ul>
           </div>
 

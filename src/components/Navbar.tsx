@@ -5,9 +5,10 @@ import { NAVIGATION_ITEMS } from "../data";
 
 interface NavbarProps {
   discordUrl?: string;
+  onNavigateToAdmin?: () => void;
 }
 
-export default function Navbar({ discordUrl = "https://discord.gg" }: NavbarProps) {
+export default function Navbar({ discordUrl = "https://discord.gg", onNavigateToAdmin }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
@@ -134,8 +135,18 @@ export default function Navbar({ discordUrl = "https://discord.gg" }: NavbarProp
             })}
           </nav>
 
-          {/* Discord CTA Button (Desktop) */}
-          <div className="hidden md:block">
+          {/* Admin & Discord CTA Buttons (Desktop) */}
+          <div className="hidden md:flex items-center space-x-3">
+            {onNavigateToAdmin && (
+              <button
+                onClick={onNavigateToAdmin}
+                className="relative overflow-hidden group bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white px-4 py-2.5 rounded-xl border border-white/10 transition-all duration-300 text-[10px] font-bold uppercase tracking-widest inline-flex items-center space-x-1.5 cursor-pointer"
+                id="cta-admin-nav"
+              >
+                <Shield className="w-3.5 h-3.5 text-[#dc2626]" />
+                <span>Portal Admin</span>
+              </button>
+            )}
             <a
               href={discordUrl}
               target="_blank"
@@ -196,7 +207,20 @@ export default function Navbar({ discordUrl = "https://discord.gg" }: NavbarProp
                   </a>
                 );
               })}
-              <div className="pt-4 px-4 border-t border-white/5">
+              <div className="pt-4 px-4 border-t border-white/5 space-y-2.5">
+                {onNavigateToAdmin && (
+                  <button
+                    onClick={() => {
+                      setIsOpen(false);
+                      onNavigateToAdmin();
+                    }}
+                    className="w-full inline-flex items-center justify-center space-x-2 px-5 py-3 bg-white/5 hover:bg-white/10 border border-white/10 text-zinc-300 hover:text-white font-bold text-[10px] uppercase tracking-widest rounded-xl transition-colors duration-200 cursor-pointer"
+                    id="mobile-cta-admin"
+                  >
+                    <Shield className="w-4 h-4 text-[#dc2626]" />
+                    <span>Portal Admin</span>
+                  </button>
+                )}
                 <a
                   href={discordUrl}
                   target="_blank"
