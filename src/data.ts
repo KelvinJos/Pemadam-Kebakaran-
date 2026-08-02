@@ -193,25 +193,25 @@ export const DIVISIONS_DATA: Division[] = [
 
 export const LEADERS_DATA: Leader[] = [
   {
-    name: "Frencline",
+    name: "Rusdi",
     role: "Kepala Dinas Pemadam",
     callsign: "NFD-01",
     description: "Pimpinan tertinggi yang memegang komando penuh operasional departemen Nusantara Fire Departement, pengelolaan kebijakan whitelist, perumusan standar taktis, dan koordinasi tingkat atas pada insiden bencana kota berskala masif.",
-    avatarUrl: "https://i.ibb.co.com/rfv6mkKQ/1000208197.webp",
+    avatarUrl: "https://i.ibb.co.com/csh2VnB/KPD-RUSDI.webp",
   },
   {
-    name: "Kelvin",
+    name: "Putra",
     role: "Wakil Kepala Dinas",
     callsign: "NFD-02",
     description: "Menjabat sebagai kepala pengawas kedisiplinan anggota internal Nusantara Fire Departement, pengelolaan roster kedinasan, penanggung jawab akademi pendidikan taruna baru, serta penyusunan administrasi promosi kenaikan pangkat.",
-    avatarUrl: "https://i.ibb.co.com/qYfr3rTH/IMG-20260601-WA0013.webp",
+    avatarUrl: "https://i.ibb.co.com/G3Gj9Wjz/WKPD-PUTRA.webp",
   },
   {
-    name: "Tidak Ada",
+    name: "Kelvin",
     role: "Sekretaris Jendral Pemadam",
     callsign: "NFD-03",
     description: "Komandan taktis lapangan yang memimpin penyebaran armada Nusantara Fire Departement di area kejadian, memastikan kelancaran komunikasi antar-divisi saat operasi multi-alarm aktif, dan mengawasi langsung keselamatan taktis zona bahaya.",
-    avatarUrl: "https://i.ibb.co.com/gkz5719/images-3.jpg",
+    avatarUrl: "https://i.ibb.co.com/qYfr3rTH/IMG-20260601-WA0013.webp",
   },
 ];
 
