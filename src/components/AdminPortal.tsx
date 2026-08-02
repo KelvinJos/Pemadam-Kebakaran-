@@ -160,6 +160,31 @@ export default function AdminPortal({ onBackToHome }: AdminPortalProps) {
     setPassword("");
   };
 
+  // Handle local image file upload from gallery / file manager
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    if (file.size > 2 * 1024 * 1024) { // 2MB limit
+      setNewsStatus({ type: "error", message: "Ukuran file terlalu besar! Maksimal 2MB." });
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = (uploadEvent) => {
+      const result = uploadEvent.target?.result as string;
+      if (result) {
+        setNewsImageUrl(result);
+        setNewsStatus({ type: "success", message: "Foto berhasil dimuat dari perangkat!" });
+        setTimeout(() => setNewsStatus(null), 3000);
+      }
+    };
+    reader.onerror = () => {
+      setNewsStatus({ type: "error", message: "Gagal membaca file gambar." });
+    };
+    reader.readAsDataURL(file);
+  };
+
   // Submit News to Firestore
   const handleAddNews = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -512,18 +537,56 @@ export default function AdminPortal({ onBackToHome }: AdminPortalProps) {
 
                         <div>
                           <label className="block text-[10px] font-mono uppercase tracking-widest text-zinc-400 font-bold mb-1.5">
-                            URL Gambar / Foto (Mendukung https://...)
+                            Gambar / Foto Berita (URL atau Upload Galeri)
                           </label>
-                          <div className="relative">
-                            <input
-                              type="url"
-                              required
-                              value={newsImageUrl}
-                              onChange={(e) => setNewsImageUrl(e.target.value)}
-                              placeholder="Contoh: https://i.ibb.co.com/..."
-                              className="w-full bg-[#111115] border border-white/5 hover:border-white/10 focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 text-white placeholder-zinc-600 rounded-xl pl-10 pr-4 py-2.5 text-xs transition-all focus:outline-none"
-                            />
-                            <ImageIcon className="w-4 h-4 text-zinc-600 absolute left-3.5 top-3" />
+                          <div className="space-y-2">
+                            <div className="relative">
+                              <input
+                                type="text"
+                                required
+                                value={newsImageUrl}
+                                onChange={(e) => setNewsImageUrl(e.target.value)}
+                                placeholder="Paste URL https://... atau pilih dari galeri di bawah"
+                                className="w-full bg-[#111115] border border-white/5 hover:border-white/10 focus:border-red-500/50 focus:ring-1 focus:ring-red-500/30 text-white placeholder-zinc-600 rounded-xl pl-10 pr-4 py-2.5 text-xs transition-all focus:outline-none truncate"
+                              />
+                              <ImageIcon className="w-4 h-4 text-zinc-600 absolute left-3.5 top-3" />
+                            </div>
+                            <div className="flex items-center space-x-2">
+                              <label className="flex-1 bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white border border-white/10 rounded-xl px-4 py-2 text-xs font-medium cursor-pointer transition-all flex items-center justify-center space-x-2">
+                                <ImageIcon className="w-3.5 h-3.5 text-red-500 shrink-0" />
+                                <span className="truncate">Ambil dari Galeri / File Manager</span>
+                                <input
+                                  type="file"
+                                  accept="image/*"
+                                  onChange={handleFileUpload}
+                                  className="hidden"
+                                />
+                              </label>
+                              {newsImageUrl && (
+                                <button
+                                  type="button"
+                                  onClick={() => setNewsImageUrl("")}
+                                  className="bg-red-950/40 hover:bg-red-900/60 text-red-400 border border-red-500/20 px-3 py-2 rounded-xl text-xs transition-colors cursor-pointer shrink-0 font-medium"
+                                >
+                                  Reset
+                                </button>
+                              )}
+                            </div>
+                            {newsImageUrl && (
+                              <div className="mt-2 relative w-full h-24 rounded-xl overflow-hidden border border-white/10 bg-black/40">
+                                <img
+                                  src={newsImageUrl}
+                                  alt="Preview"
+                                  className="w-full h-full object-cover"
+                                  onError={(e) => {
+                                    // Fallback or ignore
+                                  }}
+                                />
+                                <div className="absolute bottom-1 right-1 bg-black/70 text-[9px] font-mono px-2 py-0.5 rounded text-zinc-300">
+                                  Preview Gambar
+                                </div>
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
