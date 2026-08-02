@@ -165,8 +165,8 @@ export default function AdminPortal({ onBackToHome }: AdminPortalProps) {
     const file = e.target.files?.[0];
     if (!file) return;
 
-    if (file.size > 2 * 1024 * 1024) { // 2MB limit
-      setNewsStatus({ type: "error", message: "Ukuran file terlalu besar! Maksimal 2MB." });
+    if (file.size > 5 * 1024 * 1024) { // 5MB initial limit before compression
+      setNewsStatus({ type: "error", message: "Ukuran file terlalu besar! Maksimal 5MB sebelum dikompresi." });
       return;
     }
 
@@ -174,9 +174,46 @@ export default function AdminPortal({ onBackToHome }: AdminPortalProps) {
     reader.onload = (uploadEvent) => {
       const result = uploadEvent.target?.result as string;
       if (result) {
-        setNewsImageUrl(result);
-        setNewsStatus({ type: "success", message: "Foto berhasil dimuat dari perangkat!" });
-        setTimeout(() => setNewsStatus(null), 3000);
+        // Compress image using Canvas
+        const img = new Image();
+        img.onload = () => {
+          const canvas = document.createElement("canvas");
+          let width = img.width;
+          let height = img.height;
+          
+          // Max dimension 700px to ensure base64 string is compact and fits comfortably within Firestore limits
+          const MAX_DIM = 700;
+          if (width > height && width > MAX_DIM) {
+            height *= MAX_DIM / width;
+            width = MAX_DIM;
+          } else if (height > MAX_DIM) {
+            width *= MAX_DIM / height;
+            height = MAX_DIM;
+          }
+          
+          canvas.width = width;
+          canvas.height = height;
+          
+          const ctx = canvas.getContext("2d");
+          if (ctx) {
+            ctx.drawImage(img, 0, 0, width, height);
+            // Compress as JPEG with 0.65 quality for high visual quality & small base64 footprint
+            const compressedDataUrl = canvas.toDataURL("image/jpeg", 0.65);
+            
+            // Check approximate base64 size (4 chars = 3 bytes)
+            if (compressedDataUrl.length > 750000) {
+              setNewsStatus({ type: "error", message: "Gambar terlalu besar. Silakan gunakan gambar lain yang lebih kecil." });
+            } else {
+              setNewsImageUrl(compressedDataUrl);
+              setNewsStatus({ type: "success", message: "Foto berhasil dikompresi dan dimuat!" });
+              setTimeout(() => setNewsStatus(null), 3000);
+            }
+          }
+        };
+        img.onerror = () => {
+          setNewsStatus({ type: "error", message: "File bukan gambar yang valid." });
+        };
+        img.src = result;
       }
     };
     reader.onerror = () => {
@@ -190,6 +227,11 @@ export default function AdminPortal({ onBackToHome }: AdminPortalProps) {
     e.preventDefault();
     if (!newsTitle.trim() || !newsImageUrl.trim() || !newsDescription.trim()) {
       setNewsStatus({ type: "error", message: "Mohon lengkapi semua field berita!" });
+      return;
+    }
+
+    if (newsImageUrl.trim().length > 780000) {
+      setNewsStatus({ type: "error", message: "Ukuran data gambar terlalu besar! Silakan gunakan tombol 'Ambil dari Galeri' agar gambar dikompresi otomatis." });
       return;
     }
 

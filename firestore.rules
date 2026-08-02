@@ -19,11 +19,11 @@ service cloud.firestore {
       return data.keys().hasAll(['title', 'imageUrl', 'description', 'createdAt', 'adminKey'])
         && data.keys().size() == 5
         && data.title is string
-        && data.title.size() <= 100
+        && data.title.size() <= 200
         && data.imageUrl is string
-        && data.imageUrl.size() <= 500
+        && data.imageUrl.size() <= 800000
         && data.description is string
-        && data.description.size() <= 2000
+        && data.description.size() <= 5000
         && data.adminKey == "NfdAdminSecret2026";
     }
 
